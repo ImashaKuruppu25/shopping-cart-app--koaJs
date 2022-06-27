@@ -4,6 +4,7 @@ const json = require("koa-json");
 const cors = require("koa-cors");
 const bodyparser = require("koa-bodyparser");
 require("dotenv").config();
+const userRouter = require("./routes/user.routes");
 
 const PORT = process.env.PORT || 5000;
 
@@ -14,7 +15,7 @@ app.use(cors());
 app.use(bodyparser());
 
 //routes
-
+app.use(userRouter.routes()).use(userRouter.allowedMethods());
 
 const db = mongoose.connection;
 
