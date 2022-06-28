@@ -3,11 +3,15 @@ const schema = mongoose.Schema;
 
 const cartSchema = new schema(
   {
-    itemCode: { type: String, required: true },
-    itemName: { type: String, required: true },
-    itemDecs: { type: String, required: false },
-    itemPrice: { type: Number, required: true },
-    itemQty: { type: Number, required: true },
+    userId: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+    items: [
+      {
+        itemCode: String,
+        itemName: String,
+        itemQty: Number,
+        itemPrice: Number,
+      },
+    ],
   },
   { timestamps: true }
 );
